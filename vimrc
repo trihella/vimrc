@@ -35,14 +35,16 @@
     set novisualbell
     set tm=500
     "set formatprg=par\ -w80jr " par pour remettre en forme les paragraphes avec gq
-    set spelllang=fr        " Langue pour la vérification orthographique
+    "set spelllang=fr        " Langue pour la vérification orthographique
+    "set nospell
     set fo+=o               " Inserer automatiquement un commentaire en passant en mode insertion
     set fo-=r               " Ne pas inserer de commentaire en pressant ENTER
+    set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 " }
 " Bundles {
-    "set rtp+=~/.vim/bundle/vundle/
-    "call vundle#rc()
-    "source ~/.vimrc.bundles
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+    source ~/.vimrc.bundles
 " }
 " Interface {
     syntax enable           " On active la coloration syntaxique
@@ -54,9 +56,12 @@
         set go-=l
     endif
     
-    set background=dark     " Thème de couleur
     "colorscheme mustang
+    let g:molokai_original = 1
+    "let g:rehash256 = 1     " Amélioré pour terminal
+    set background=dark     " Thème de couleur: Molokai
     colorscheme molokai
+
     set tw=80
     au BufNewFile,BufRead *.tex set tw=100
     
@@ -78,6 +83,14 @@
     set ai                  " Indentation automatique
     set si                  " Indentation intelligente
     set wrap
+
+    set laststatus=2        " Afficher en permanence la barre de status
+    set statusline=%<%f\                     " Filename
+    set statusline+=%w%h%m%r                 " Options
+    set statusline+=%{fugitive#statusline()} " Git Hotness
+    set statusline+=\ [%{&ff}/%Y]            " Filetype
+    set statusline+=\ [%{getcwd()}]          " Current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 " }
 " Déplacements modifs clavier {
 
@@ -140,48 +153,92 @@
             .s/$/\=(' '.repeat(a:str,reps))/
         endif
     endfunction '
-
+" }
 " Plugins{
-     "Powerline (la barre d'état en bas)
-    "set laststatus=2
-    "set t_Co=256 
-    
-    "CTRL-P bindings
-    "let g:ctrlp_map = '<leader>p'
-    "let g:ctrlp_cmd = 'CtrlP'
-    "let g:ctrlp_extensions = ['funky', 'line', 'dir']
-    "nmap ,b :CtrlPLine<CR>
-    "nmap ,m :CtrlPMRUFiles<CR>
-    
-     "Python mode
-    "let g:pymode_rope = 0    Disable pythonmode rope, using jedi instead
-    "let g:pymode_indent = 1  Enable indent
-    "let g:pymode_doc = 0     Disable pythonmode doc
-    "let g:pymode_lint = 1    Syntax checker pylint, pep8
-    "let g:pymode_lint_checker = "pyflakes,pep8"
-    "let g:pymode_lint_write = 1   Auto check on save
-     "Support virtualenv
-    "let g:pymode_virtualenv = 1
-    
-     "Enable breakpoints plugin
-    "let g:pymode_breakpoint = 1
-    "let g:pymode_breakpoint_key = '<leader>b'
-    
-     "syntax highlighting
-    "let g:pymode_syntax = 1
-    "let g:pymode_syntax_all = 1
-    "let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-    "let g:pymode_syntax_space_errors = g:pymode_syntax_all
-    
-     "Don't autofold code
-    "let g:pymode_folding = 0
-    
-     "Supertab complétion avec la touche tab 
-    "set omnifunc=syntaxcomplete#Complete
-    "let g:SuperTabDefaultCompletionType = "context"
-    
-    "nmap <F6> :TlistToggle<cr>
-    "let Tlist_Use_Right_Window = 1
-    
-    "nnoremap <F7> :GundoToggle<CR>
+    " CTRL-P (Fuzzy finder) {
+        let g:ctrlp_map = ',e'
+        nmap ,g :CtrlPBufTag<CR>
+        nmap ,G :CtrlPBufTagAll<CR>
+        nmap ,f :CtrlPLine<CR>
+        nmap ,m :CtrlPMRUFiles<CR>
+        nmap ,c :CtrlPCmdPalette<CR>
+        " Don't change working directory
+        let g:ctrlp_working_path_mode = 0
+        " Ignore files on fuzzy finder
+        let g:ctrlp_custom_ignore = {
+          \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
+          \ 'file': '\.pyc$\|\.pyo$',
+          \ }
+    "}
+    " Python Mode {
+        
+    " }
+    " Ctags {
+        set tags=./tags;/,~/.vimtags
+    " }
+    " Session List {
+        set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+        nmap <leader>sl :SessionList<CR>
+        nmap <leader>ss :SessionSave<CR>
+    " }
+    " Undo Tree {
+        let g:undotree_SetFocusWhenToggle=1
+        nnoremap <F7> :GundoToggle<CR>
+    " }
+    " Startify{
+        let g:startify_custom_header = [
+            \ '   __      ___            ______ ____   ',
+            \ '   \ \    / (_)           |____  |___ \ ',
+            \ '    \ \  / / _ _ __ ___       / /  __) |',
+            \ '     \ \/ / | | ''_ ` _ \     / /  |__ <',
+            \ '      \  /  | | | | | | |   / /   ___) |',
+            \ '       \/   |_|_| |_| |_|  /_(_) |____/ ',
+            \ '',
+            \ '',
+            \ ]
+    " }
+    " Anciens plugins{
+         "Powerline (la barre d'état en bas)
+        "set laststatus=2
+        "set t_Co=256 
+        
+        "CTRL-P bindings
+        "let g:ctrlp_map = '<leader>p'
+        "let g:ctrlp_cmd = 'CtrlP'
+        "let g:ctrlp_extensions = ['funky', 'line', 'dir']
+        "nmap ,b :CtrlPLine<CR>
+        "nmap ,m :CtrlPMRUFiles<CR>
+        
+         "Python mode
+        "let g:pymode_rope = 0    Disable pythonmode rope, using jedi instead
+        "let g:pymode_indent = 1  Enable indent
+        "let g:pymode_doc = 0     Disable pythonmode doc
+        "let g:pymode_lint = 1    Syntax checker pylint, pep8
+        "let g:pymode_lint_checker = "pyflakes,pep8"
+        "let g:pymode_lint_write = 1   Auto check on save
+         "Support virtualenv
+        "let g:pymode_virtualenv = 1
+        
+         "Enable breakpoints plugin
+        "let g:pymode_breakpoint = 1
+        "let g:pymode_breakpoint_key = '<leader>b'
+        
+         "syntax highlighting
+        "let g:pymode_syntax = 1
+        "let g:pymode_syntax_all = 1
+        "let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+        "let g:pymode_syntax_space_errors = g:pymode_syntax_all
+        
+         "Don't autofold code
+        "let g:pymode_folding = 0
+        
+         "Supertab complétion avec la touche tab 
+        "set omnifunc=syntaxcomplete#Complete
+        "let g:SuperTabDefaultCompletionType = "context"
+        
+        "nmap <F6> :TlistToggle<cr>
+        "let Tlist_Use_Right_Window = 1
+        
+        "nnoremap <F7> :GundoToggle<CR>
+    "}
 " }

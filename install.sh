@@ -5,6 +5,7 @@ git submodule init
 git submodule update
 
 # Creating symbolik links
-ln -s vimrc ~/.vimrc
-ln -s vimrc.bundle ~/.vimrc.bundle
-ln -s vim ~/.vim
+currDir=$(pwd)
+ln -sf $currDir/vimrc ~/.vimrc
+ln -sf $currDir/vimrc.bundles ~/.vimrc.bundles
+ln -sf $currDir/vim ~/.vim

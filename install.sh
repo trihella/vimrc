@@ -9,3 +9,5 @@ currDir=$(pwd)
 ln -sf $currDir/vimrc ~/.vimrc
 ln -sf $currDir/vimrc.bundles ~/.vimrc.bundles
 ln -sf $currDir/vim ~/.vim
+
+vim +BundleInstall

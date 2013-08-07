@@ -11,9 +11,8 @@ Bundle 'gmarik/vundle'
 " Intégration de GIT dans vim
 Bundle 'tpope/vim-fugitive'
 " Complétion à l'aide de la touche tab
-Bundle "SuperTab"
 " Snipmate
-Bundle "http://github.com/gmarik/snipmate.vim.git"
+"Bundle "http://github.com/gmarik/snipmate.vim.git"
 " Un fuzzy finder
 Bundle 'kien/ctrlp.vim'
 " fuzzy command finder
@@ -24,13 +23,16 @@ Bundle 'tpope/vim-surround'
 " Python mode
 Bundle 'klen/python-mode'
 " Python code checking
-Bundle 'pyflakes.vim'
+Bundle 'kevinw/pyflakes-vim'
 Bundle 'vim-scripts/sessionman.vim'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'mbbill/undotree'
 " Bel écran de démarage
 Bundle 'mhinz/vim-startify'
+Bundle 'davidhalter/jedi-vim'
 
 " Numéro de ligne plus propres
 Bundle 'myusuf3/numbers.vim'
 Bundle 'airblade/vim-gitgutter'
+"Bundle 'xolox/vim-easytags'
+Bundle "SuperTab"

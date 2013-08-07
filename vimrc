@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 tw=78 foldmarker={,} foldlevel=0 foldmethod=marker nospell:
 " ===========================================================================
 "       Vimrc
 "
@@ -47,6 +47,7 @@
     source ~/.vimrc.bundles
 " }
 " Interface {
+    set t_Co=256
     syntax enable           " On active la coloration syntaxique
     set nu                  " Afficher les numéros de ligne
     if has('gui')

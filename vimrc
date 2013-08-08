@@ -47,6 +47,7 @@
     source ~/.vimrc.bundles
 " }
 " Interface {
+    set cursorline
     set t_Co=256
     syntax enable           " On active la coloration syntaxique
     set nu                  " Afficher les numéros de ligne
@@ -58,10 +59,15 @@
     endif
     
     "colorscheme mustang
-    let g:molokai_original = 1
+    "let g:molokai_original = 1
     "let g:rehash256 = 1     " Amélioré pour terminal
     set background=dark     " Thème de couleur: Molokai
-    colorscheme molokai
+    "colorscheme molokai
+    "colorscheme jellybeans_modified
+    "colorscheme wombat256mod
+    colorscheme xoria256
+    hi clear SpellBad
+    hi SpellBad cterm=underline
 
     set tw=80
     au BufNewFile,BufRead *.tex set tw=100
@@ -181,6 +187,7 @@
         "Linting
         let g:pymode_lint = 1
         let g:pymode_lint_checker = "pyflakes,pep8"
+        let g:pyflakes_use_quickfix = 0 " Ne pas utiliser quickfix
 
         " Coloration syntaxique
         let g:pymode_syntax = 1

@@ -65,7 +65,8 @@
     "colorscheme molokai
     "colorscheme jellybeans_modified
     "colorscheme wombat256mod
-    colorscheme xoria256
+    " colorscheme xoria256
+    colorscheme kolor
     hi clear SpellBad
     hi SpellBad cterm=underline
 
@@ -98,7 +99,7 @@
     set statusline+=\ [%{&ff}/%Y]            " Filetype
     set statusline+=\ [%{getcwd()}]          " Current dir
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-" }
+"wa }
 " Déplacements modifs clavier {
 
     set backspace=indent,eol,start " Définition du comportement de backspace
@@ -227,45 +228,11 @@
         set omnifunc=syntaxcomplete#Complete
         "let g:SuperTabDefaultCompletionType = "context"
     " }
-    " Anciens plugins{
-         "Powerline (la barre d'état en bas)
-        "set laststatus=2
-        "set t_Co=256 
-        
-        "CTRL-P bindings
-        "let g:ctrlp_map = '<leader>p'
-        "let g:ctrlp_cmd = 'CtrlP'
-        "let g:ctrlp_extensions = ['funky', 'line', 'dir']
-        "nmap ,b :CtrlPLine<CR>
-        "nmap ,m :CtrlPMRUFiles<CR>
-        
-         "Python mode
-        "let g:pymode_rope = 0    Disable pythonmode rope, using jedi instead
-        "let g:pymode_indent = 1  Enable indent
-        "let g:pymode_doc = 0     Disable pythonmode doc
-        "let g:pymode_lint = 1    Syntax checker pylint, pep8
-        "let g:pymode_lint_checker = "pyflakes,pep8"
-        "let g:pymode_lint_write = 1   Auto check on save
-         "Support virtualenv
-        "let g:pymode_virtualenv = 1
-        
-         "Enable breakpoints plugin
-        "let g:pymode_breakpoint = 1
-        "let g:pymode_breakpoint_key = '<leader>b'
-        
-         "syntax highlighting
-        "let g:pymode_syntax = 1
-        "let g:pymode_syntax_all = 1
-        "let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-        "let g:pymode_syntax_space_errors = g:pymode_syntax_all
-        
-         "Don't autofold code
-        "let g:pymode_folding = 0
-        
-        
-        "nmap <F6> :TlistToggle<cr>
-        "let Tlist_Use_Right_Window = 1
-        
-        "nnoremap <F7> :GundoToggle<CR>
-    "}
+    " Snipmate {
+        imap è <Plug>snipMateNextOrTrigger
+        smap è <Plug>snipMateNextOrTrigger
+        imap È <Plug>snipMateBack
+        smap È <Plug>snipMateBack
+
+    " }
 " }

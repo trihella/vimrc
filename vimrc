@@ -34,7 +34,7 @@
     set noerrorbells        " Désactiver les sons
     set novisualbell
     set tm=500
-    "set formatprg=par\ -w80jr " par pour remettre en forme les paragraphes avec gq
+    set formatprg=par\ -w78jr " par pour remettre en forme les paragraphes avec gq
     "set spelllang=fr        " Langue pour la vérification orthographique
     "set nospell
     set fo+=o               " Inserer automatiquement un commentaire en passant en mode insertion
@@ -70,8 +70,8 @@
     hi clear SpellBad
     hi SpellBad cterm=underline
 
-    set tw=80
-    au BufNewFile,BufRead *.tex set tw=100
+    set tw=78
+    au BufNewFile,BufRead *.tex set tw=78
     
     set encoding=utf-8      " Encodage utilisé
     set fileencoding=utf-8
@@ -119,6 +119,19 @@
     nmap <F5> :!ctags -R &<cr><cr>
     inoremap <leader><leader> <ESC>
     
+    noremap n l
+    noremap r k
+    noremap s j
+    noremap t h
+
+    noremap h t
+    noremap j s
+    noremap l n
+    noremap k r
+
+    noremap è ^
+    noremap È 0
+
     " Déplacement facile entre les fenètres ouvertes
     map <C-k> <C-W>k
     map <C-j> <C-W>j
@@ -229,10 +242,9 @@
         "let g:SuperTabDefaultCompletionType = "context"
     " }
     " Snipmate {
-        imap è <Plug>snipMateNextOrTrigger
-        smap è <Plug>snipMateNextOrTrigger
-        imap È <Plug>snipMateBack
-        smap È <Plug>snipMateBack
-
+        imap <C-a> <Plug>snipMateNextOrTrigger
+        smap <C-a> <Plug>snipMateNextOrTrigger
+        imap <C-b> <Plug>snipMateBack
+        smap <C-b> <Plug>snipMateBack
     " }
 " }

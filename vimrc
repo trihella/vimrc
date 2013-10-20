@@ -70,8 +70,8 @@
     hi clear SpellBad
     hi SpellBad cterm=underline
 
-    set tw=78
-    au BufNewFile,BufRead *.tex set tw=78
+    set tw=78               " Largeur de texte de 78 caractères maximums
+    set cc=79               " Surlignage de la 78 ème colonne
     
     set encoding=utf-8      " Encodage utilisé
     set fileencoding=utf-8

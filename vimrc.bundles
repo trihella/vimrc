@@ -12,14 +12,12 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 " Complétion à l'aide de la touche tab
 " Snipmate
-"Bundle "http://github.com/gmarik/snipmate.vim.git"
 " Un fuzzy finder
 Bundle 'kien/ctrlp.vim'
 " fuzzy command finder
 Bundle 'fisadev/vim-ctrlp-cmdpalette'
 " Surround
 Bundle 'tpope/vim-surround'
-
 " Mouvements améliorés
 Bundle 'Lokaltog/vim-easymotion'
 
@@ -36,9 +34,10 @@ Bundle 'mhinz/vim-startify'
 Bundle 'davidhalter/jedi-vim'
 
 " Numéro de ligne plus propres
-Bundle 'myusuf3/numbers.vim'
-Bundle 'airblade/vim-gitgutter'
+"Bundle 'myusuf3/numbers.vim'
+"Bundle 'airblade/vim-gitgutter'
 "Bundle 'xolox/vim-easytags'
+Bundle 'majutsushi/tagbar'
 Bundle "SuperTab"
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -46,7 +45,8 @@ Bundle "garbas/vim-snipmate"
 
 " Optional:
 Bundle "honza/vim-snippets"
-
+Bundle "noahfrederick/vim-hemisu"
+Bundle "Townk/vim-autoclose"
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 
 Bundle "honza/vim-snippets"

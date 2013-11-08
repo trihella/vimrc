@@ -51,22 +51,38 @@
     set t_Co=256
     syntax enable           " On active la coloration syntaxique
     set nu                  " Afficher les numéros de ligne
-    if has('gui')
+   
+    "colorscheme mustang
+    "let g:molokai_original = 1
+     if has('gui_running')
         set go-=m
         set go-=T
         set go-=r
         set go-=l
+        set go-=rL
+        set go-=e
+        set guicursor=a:blinkon0
+        "set background=light
+        "let g:solarized_contrast="high"
+        "let g:solarized_visibility="high"
+        "let g:solarized_underline=0
+        "let g:solarized_bold=1
+        "let g:solarized_italic=1
+        "colorscheme solarized
+        set background=dark
+        "colorscheme jellybeans
+        colorscheme molokai
+        set antialias
+        set guifont=Inconsolata-g\ 10
+    else
+        set background=dark     " Thème de couleur: Molokai
+        colorscheme kolor
     endif
-    
-    "colorscheme mustang
-    "let g:molokai_original = 1
     "let g:rehash256 = 1     " Amélioré pour terminal
-    set background=dark     " Thème de couleur: Molokai
     "colorscheme molokai
     "colorscheme jellybeans_modified
     "colorscheme wombat256mod
     " colorscheme xoria256
-    colorscheme kolor
     hi clear SpellBad
     hi SpellBad cterm=underline
 
@@ -99,7 +115,7 @@
     set statusline+=\ [%{&ff}/%Y]            " Filetype
     set statusline+=\ [%{getcwd()}]          " Current dir
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-"wa }
+" }
 " Déplacements modifs clavier {
 
     set backspace=indent,eol,start " Définition du comportement de backspace
@@ -132,11 +148,11 @@
     noremap è ^
     noremap È 0
 
-    " Déplacement facile entre les fenètres ouvertes
-    map <C-k> <C-W>k
-    map <C-j> <C-W>j
-    map <C-h> <C-W>h
-    map <C-l> <C-W>l
+    " Déplacement facile entre les fenètres ouvertes, version bépo
+    map <C-r> <C-W>k
+    map <C-s> <C-W>j
+    map <C-t> <C-W>h
+    map <C-n> <C-W>l
     
     highlight NbSp ctermbg=lightgray guibg=lightred
     match NbSp /\%xa0/
@@ -246,5 +262,9 @@
         smap <C-a> <Plug>snipMateNextOrTrigger
         imap <C-b> <Plug>snipMateBack
         smap <C-b> <Plug>snipMateBack
+    " }
+    " Tag Bar{
+        nmap <F8> :TagbarToggle<CR>
+        
     " }
 " }

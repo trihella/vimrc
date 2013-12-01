@@ -52,8 +52,6 @@
     syntax enable           " On active la coloration syntaxique
     set nu                  " Afficher les numéros de ligne
    
-    "colorscheme mustang
-    "let g:molokai_original = 1
      if has('gui_running')
         set go-=m
         set go-=T
@@ -69,22 +67,23 @@
         "let g:solarized_bold=1
         "let g:solarized_italic=1
         "colorscheme solarized
-        set background=dark
-        "colorscheme jellybeans
-        colorscheme molokai
+        " ===== MUSTANG colorscheme
+        "set background=dark
+        "colorscheme mustang
+        set background=light
+        colorscheme rainbow_fruit
         set antialias
         set guifont=Inconsolata-g\ 10
     else
         set background=dark     " Thème de couleur: Molokai
-        colorscheme kolor
+        colorscheme mustang
+        "colorscheme kolor
     endif
-    "let g:rehash256 = 1     " Amélioré pour terminal
-    "colorscheme molokai
-    "colorscheme jellybeans_modified
-    "colorscheme wombat256mod
-    " colorscheme xoria256
+
     hi clear SpellBad
     hi SpellBad cterm=underline
+    hi ColorColumn guibg=#FFD1D1 ctermbg=236
+    hi CursorLine ctermbg=236 cterm=NONE
 
     set tw=78               " Largeur de texte de 78 caractères maximums
     set cc=79               " Surlignage de la 78 ème colonne
@@ -104,9 +103,8 @@
     set  softtabstop=4
     
     set lbr                 " Saut de ligne lorsque tw est dépassé
-    set ai                  " Indentation automatique
-    set si                  " Indentation intelligente
-    set wrap
+    set autoindent
+    set wrap                "  Afficher les lignes trop long sur plusieurs
 
     set laststatus=2        " Afficher en permanence la barre de status
     set statusline=%<%f\                     " Filename
@@ -208,6 +206,7 @@
           \ }
     "}
     " Python Mode {
+        "let g:pymode = 1
         let g:pymode_rope = 0
          
         " Documentation
@@ -216,7 +215,8 @@
          
         "Linting
         let g:pymode_lint = 1
-        let g:pymode_lint_checker = "pyflakes,pep8"
+        let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
+        let g:pymode_lint_ignore = "W0"
         let g:pyflakes_use_quickfix = 0 " Ne pas utiliser quickfix
 
         " Coloration syntaxique
@@ -225,7 +225,7 @@
         let g:pymode_syntax_indent_errors = g:pymode_syntax_all
         let g:pymode_syntax_space_errors = g:pymode_syntax_all
         " Don't autofold code
-        let g:pymode_folding = 1
+        "let g:pymode_folding = 1
          
         let g:pymode_indent = 1
     " }

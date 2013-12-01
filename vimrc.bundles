@@ -24,7 +24,7 @@ Bundle 'Lokaltog/vim-easymotion'
 " Python mode
 Bundle 'klen/python-mode'
 " Python code checking
-Bundle 'kevinw/pyflakes-vim'
+"Bundle 'kevinw/pyflakes-vim'
 
 Bundle 'vim-scripts/sessionman.vim'
 Bundle 'flazz/vim-colorschemes'

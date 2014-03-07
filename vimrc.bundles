@@ -14,8 +14,8 @@ Bundle 'tpope/vim-fugitive'
 " Snipmate
 " Un fuzzy finder
 Bundle 'kien/ctrlp.vim'
-" fuzzy command finder
 Bundle 'fisadev/vim-ctrlp-cmdpalette'
+
 " Surround
 Bundle 'tpope/vim-surround'
 " Mouvements améliorés
@@ -23,6 +23,10 @@ Bundle 'Lokaltog/vim-easymotion'
 
 " Python mode
 Bundle 'klen/python-mode'
+
+" Haskell mode
+Bundle 'dag/vim2hs'
+
 " Python code checking
 "Bundle 'kevinw/pyflakes-vim'
 
@@ -31,7 +35,11 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'mbbill/undotree'
 " Bel écran de démarage
 Bundle 'mhinz/vim-startify'
-Bundle 'davidhalter/jedi-vim'
+"Bundle 'davidhalter/jedi-vim'
+ 
+Bundle 'godlygeek/tabular'
+Bundle 'bling/vim-airline'
+
 
 " Numéro de ligne plus propres
 "Bundle 'myusuf3/numbers.vim'
@@ -45,8 +53,8 @@ Bundle "garbas/vim-snipmate"
 
 " Optional:
 Bundle "honza/vim-snippets"
-Bundle "noahfrederick/vim-hemisu"
 Bundle "Townk/vim-autoclose"
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 
 Bundle "honza/vim-snippets"
+

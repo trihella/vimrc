@@ -34,8 +34,8 @@
     set noerrorbells        " Désactiver les sons
     set novisualbell
     set tm=500
-    set formatprg=par\ -w78jr " par pour remettre en forme les paragraphes avec gq
-    "set spelllang=fr        " Langue pour la vérification orthographique
+    "set formatprg=par\ -w78jr " par pour remettre en forme les paragraphes avec gq
+    set spelllang=fr        " Langue pour la vérification orthographique
     "set nospell
     set fo+=o               " Inserer automatiquement un commentaire en passant en mode insertion
     set fo-=r               " Ne pas inserer de commentaire en pressant ENTER
@@ -60,20 +60,20 @@
         set go-=rL
         set go-=e
         set guicursor=a:blinkon0
-        "set background=light
-        "let g:solarized_contrast="high"
-        "let g:solarized_visibility="high"
-        "let g:solarized_underline=0
-        "let g:solarized_bold=1
-        "let g:solarized_italic=1
-        "colorscheme solarized
-        " ===== MUSTANG colorscheme
+        set background=dark
+        let g:solarized_contrast="high"
+        let g:solarized_visibility="high"
+        let g:solarized_underline=0
+        let g:solarized_bold=1
+        let g:solarized_italic=1
+        colorscheme solarized
+        "" ===== MUSTANG colorscheme
+        ""set background=dark
+        ""colorscheme mustang
         "set background=dark
-        "colorscheme mustang
-        set background=light
-        colorscheme rainbow_fruit
+        "colorscheme mayansmoke
         set antialias
-        set guifont=Inconsolata-g\ 10
+        set guifont=Monospace\ 9
     else
         set background=dark     " Thème de couleur: Molokai
         colorscheme mustang
@@ -82,7 +82,7 @@
 
     hi clear SpellBad
     hi SpellBad cterm=underline
-    hi ColorColumn guibg=#FFD1D1 ctermbg=236
+    hi ColorColumn ctermbg=236
     hi CursorLine ctermbg=236 cterm=NONE
 
     set tw=78               " Largeur de texte de 78 caractères maximums
@@ -113,6 +113,9 @@
     set statusline+=\ [%{&ff}/%Y]            " Filetype
     set statusline+=\ [%{getcwd()}]          " Current dir
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+
+
+    au! BufNewFile,BufRead *.cl setf cpp
 " }
 " Déplacements modifs clavier {
 
@@ -205,9 +208,16 @@
           \ 'file': '\.pyc$\|\.pyo$',
           \ }
     "}
+    " vim2hs {
+        let g:haskell_conceal_wide = 1
+    " }
+    " vim-airline {
+        let g:airline#extensions#tabline#enabled = 1
+    " }
     " Python Mode {
         "let g:pymode = 1
-        let g:pymode_rope = 0
+        let g:pymode_rope = 1
+        let g:pymode_rope_goto_definition_bind = '<leader>rg'
          
         " Documentation
         let g:pymode_doc = 1

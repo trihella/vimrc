@@ -11,7 +11,7 @@
     set showcmd             " Affichage de la commande que l'on est en train de taper
     set  nocp               " Désactivation de la compatibilité avec vi (pour les plugins)
     filetype on             " Activation des plugins
-    filetype indent on 
+    filetype indent on
     filetype plugin on
     set mouse=a             " Activation de la souris en shell
     set so=7                " Imposer 7 lignes au dessus du curseur pour les mouvements verticaux
@@ -39,7 +39,8 @@
     "set nospell
     set fo+=o               " Inserer automatiquement un commentaire en passant en mode insertion
     set fo-=r               " Ne pas inserer de commentaire en pressant ENTER
-    set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+    set list
+    set listchars=tab:›-,trail:.,extends:#,nbsp:.
 " }
 " Bundles {
     set rtp+=~/.vim/bundle/vundle/
@@ -51,7 +52,7 @@
     set t_Co=256
     syntax enable           " On active la coloration syntaxique
     set nu                  " Afficher les numéros de ligne
-   
+
      if has('gui_running')
         set go-=m
         set go-=T
@@ -61,12 +62,7 @@
         set go-=e
         set guicursor=a:blinkon0
         set background=dark
-        let g:solarized_contrast="high"
-        let g:solarized_visibility="high"
-        let g:solarized_underline=0
-        let g:solarized_bold=1
-        let g:solarized_italic=1
-        colorscheme solarized
+        colorscheme kolor
         "" ===== MUSTANG colorscheme
         ""set background=dark
         ""colorscheme mustang
@@ -76,7 +72,9 @@
         set guifont=Monospace\ 9
     else
         set background=dark     " Thème de couleur: Molokai
-        colorscheme mustang
+        colorscheme hybrid
+        " colorscheme solarized
+        " colorscheme busybee
         "colorscheme kolor
     endif
 
@@ -87,21 +85,21 @@
 
     set tw=78               " Largeur de texte de 78 caractères maximums
     set cc=79               " Surlignage de la 78 ème colonne
-    
+
     set encoding=utf-8      " Encodage utilisé
     set fileencoding=utf-8
     set ffs=unix,dos,mac
-    
+
     set nobackup            "Configuration des backups (pas de sauvegarde)
     set nowb
     set noswapfile
-    
+
     set expandtab           " remplacer les tabulations par des espaces
     set smarttab            " Tabulation intelligente
     set  tabstop=4          " Taille d'une tabulation
     set  shiftwidth=4
     set  softtabstop=4
-    
+
     set lbr                 " Saut de ligne lorsque tw est dépassé
     set autoindent
     set wrap                "  Afficher les lignes trop long sur plusieurs
@@ -121,7 +119,7 @@
 
     set backspace=indent,eol,start " Définition du comportement de backspace
     set whichwrap+=<,>,h,l
-    
+
     let mapleader = ","     " On définit la touche leader pour définir quelques raccourcis
     let g:mapleader = ","
     nmap <leader>w :w!<CR>  " Sauvegarde rapide
@@ -131,11 +129,11 @@
     nmap <leader>tn :tabnew<cr> " Raccourci pour gerer les onglets
     nmap <leader>to :tabonly<cr>
     nmap <leader>tc :tabclose<cr>
-    nmap <leader>tm :tabmove 
+    nmap <leader>tm :tabmove
     nmap <leader>tl :tabnext<cr>
     nmap <F5> :!ctags -R &<cr><cr>
     inoremap <leader><leader> <ESC>
-    
+
     noremap n l
     noremap r k
     noremap s j
@@ -154,27 +152,27 @@
     map <C-s> <C-W>j
     map <C-t> <C-W>h
     map <C-n> <C-W>l
-    
+
     highlight NbSp ctermbg=lightgray guibg=lightred
     match NbSp /\%xa0/
-    
+
     nmap <F4> :Ggrep expand("<cword>")
 
 " }
 " Fonctions {
 
     function! MyFoldFunction()
-    		let line = getline(v:foldstart)
-    		let sub = substitute(line,'/\*\|\*/\|^\s+', '', 'g')
-    		let lines = v:foldend - v:foldstart + 1
-    		return v:folddashes.sub.'...'.lines.'Lines...'.getline(v:foldend)
+            let line = getline(v:foldstart)
+            let sub = substitute(line,'/\*\|\*/\|^\s+', '', 'g')
+            let lines = v:foldend - v:foldstart + 1
+            return v:folddashes.sub.'...'.lines.'Lines...'.getline(v:foldend)
     endfunction
-    
-    
+
+
     " Fold automatique
     set  foldmethod =syntax
-    set  foldtext =MyFoldFunction()    
-    
+    set  foldtext =MyFoldFunction()
+
     " fill rest of line with characters
     function! FillLine( str )
         " set tw to the desired total length
@@ -218,11 +216,11 @@
         "let g:pymode = 1
         let g:pymode_rope = 1
         let g:pymode_rope_goto_definition_bind = '<leader>rg'
-         
+
         " Documentation
         let g:pymode_doc = 1
         let g:pymode_doc_key = 'K'
-         
+
         "Linting
         let g:pymode_lint = 1
         let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
@@ -236,7 +234,7 @@
         let g:pymode_syntax_space_errors = g:pymode_syntax_all
         " Don't autofold code
         "let g:pymode_folding = 1
-         
+
         let g:pymode_indent = 1
     " }
     " Ctags {
@@ -275,6 +273,6 @@
     " }
     " Tag Bar{
         nmap <F8> :TagbarToggle<CR>
-        
+
     " }
 " }

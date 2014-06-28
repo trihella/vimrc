@@ -159,6 +159,8 @@
     " }
     " vim-airline {
         let g:airline#extensions#tabline#enabled = 1
+        let g:airline_theme="jellybeans"
+        let g:airline_detect_modified=1
     " }
     " Python Mode {
         "let g:pymode = 1

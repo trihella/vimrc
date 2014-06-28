@@ -1,194 +1,142 @@
-" vim: set sw=4 ts=4 sts=4 tw=78 foldmarker={,} foldlevel=0 foldmethod=marker nospell:
-" ===========================================================================
+" vim: set sw=4 ts=4 sts=4 tw=80 foldmarker={,} foldlevel=0 foldmethod=marker nospell:
+" =========================================================================== "
 "       Vimrc
 "
 "       Author: Thomas Hiscock
 "       Mail: hiscockt@minatec.inpg.fr
-" ===========================================================================
+" =========================================================================== "
 
-" Paramètres globaux {
-    set autoread            " Rafraichissement automatique du fichier en cours d'édition
-    set showcmd             " Affichage de la commande que l'on est en train de taper
-    set  nocp               " Désactivation de la compatibilité avec vi (pour les plugins)
-    filetype on             " Activation des plugins
+" Editor {
+    "set autoread           " Autoreload file while editing
+    set encoding=utf-8
+    set fileencoding=utf-8
+    set ffs=unix,dos,mac
+
+    set nobackup            " No backup and swap files
+    set nowb
+    set noswapfile
+
+    set showcmd             " Print current command
+    set  nocp               " Vi compatibility disabled
+    filetype on
     filetype indent on
     filetype plugin on
-    set mouse=a             " Activation de la souris en shell
-    set so=7                " Imposer 7 lignes au dessus du curseur pour les mouvements verticaux
-    set nomousehide         " Curseur toujours visible
-    set wildmenu            " Activer le wild menu (proposition des choix de complétion)
-                            " Ignorer certains types de fichiers pour la complétion
+    set mouse=a             " Mouse active in vim shell version
+    set so=7                " 7 line bellow vertical moves
+    set nomousehide         " Always show cursor
+    set wildmenu            " Completion menu
     set wildignore =*.o,*.r,*.so,*.sl,*.tar,*.tgz
     set wildmode=list:longest,full
-    set ruler               " Toujours afficher la position actuelle
-    set cmdheight=1         " Hauteur de la barre de commande
+    set ruler               " Show current position (in line and col)
+    set cmdheight=1
     set hid                 " Ne pas afficher les buffer que l'on a fermé
-    set ignorecase          " Ignorer la casse lors d'une recherche
-    set smartcase           " Recherche intelligente
-    set hlsearch            " Surligner les résultats de recherches
-    set incsearch           " Affichage des résultats en même temps que la saisie
-    set lazyredraw          " Optimisation des macros
-    set magic               " Pour les expréssion régulières dans les remplacements
-    set showmatch           " Afficher les parenthèses correspondantes
-    set mat=2               " Vitesse de clignotement des parenthèses correspondantes
-    set noerrorbells        " Désactiver les sons
+    set ignorecase
+    set smartcase
+    set hlsearch            " Highlight search results
+    set incsearch           " Search while typing the search string
+    set lazyredraw
+    set magic
+    set showmatch           " Show matching brackets, parenthesis ect...
+    set mat=2
+    set noerrorbells        " No bell !
     set novisualbell
     set tm=500
-    "set formatprg=par\ -w78jr " par pour remettre en forme les paragraphes avec gq
-    set spelllang=fr        " Langue pour la vérification orthographique
+    "set formatprg=par\ -w78jr " Paragraph formating with par, give better
+                               " results but require par installed
+    set spelllang=fr        " Spellchecking : FR
     "set nospell
-    set fo+=o               " Inserer automatiquement un commentaire en passant en mode insertion
-    set fo-=r               " Ne pas inserer de commentaire en pressant ENTER
+    set fo+=o               " Automatically insert a comment while passing in
+                            " insert mode
+    set fo-=r               " Do not automatically insert comment when pressing
+                            " <ENTER> in insert mode
     set list
     set listchars=tab:›-,trail:.,extends:#,nbsp:.
 " }
 " Bundles {
+    " Vundle manage all plugins, configure the next line to point vundle
+    " install directory
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
     source ~/.vimrc.bundles
 " }
-" Interface {
-    set cursorline
-    set t_Co=256
-    syntax enable           " On active la coloration syntaxique
-    set nu                  " Afficher les numéros de ligne
-
-     if has('gui_running')
-        set go-=m
-        set go-=T
-        set go-=r
-        set go-=l
-        set go-=rL
-        set go-=e
-        set guicursor=a:blinkon0
-        set background=dark
-        colorscheme kolor
-        "" ===== MUSTANG colorscheme
-        ""set background=dark
-        ""colorscheme mustang
-        "set background=dark
-        "colorscheme mayansmoke
-        set antialias
-        set guifont=Monospace\ 9
+" UI Look {
+    set cursorline          " Highlight the current line
+    set t_Co=256            " 256 color mode
+    syntax enable
+    set nu
+    set foldmethod =syntax " Automatic folding
+    if has('gui_running')
+       set go-=m            " Make gui looks like the shell, remove menu,
+       set go-=T            " side scroller ect...
+       set go-=r
+       set go-=l
+       set go-=rL
+       set go-=e
+       set guicursor=a:blinkon0
+       set background=dark
+       colorscheme kolor
+       set antialias
+       set guifont=Monospace\ 9
     else
-        set background=dark     " Thème de couleur: Molokai
+        set background=dark
         colorscheme hybrid
-        " colorscheme solarized
-        " colorscheme busybee
-        "colorscheme kolor
     endif
 
+    " Some color customisations
     hi clear SpellBad
     hi SpellBad cterm=underline
     hi ColorColumn ctermbg=236
     hi CursorLine ctermbg=236 cterm=NONE
 
-    set tw=78               " Largeur de texte de 78 caractères maximums
-    set cc=79               " Surlignage de la 78 ème colonne
+    "set tw=80              " Max line width 78. Disabled, i use the cursor column
+    set cc=79               " Show cursor column
 
-    set encoding=utf-8      " Encodage utilisé
-    set fileencoding=utf-8
-    set ffs=unix,dos,mac
-
-    set nobackup            "Configuration des backups (pas de sauvegarde)
-    set nowb
-    set noswapfile
-
-    set expandtab           " remplacer les tabulations par des espaces
-    set smarttab            " Tabulation intelligente
-    set  tabstop=4          " Taille d'une tabulation
-    set  shiftwidth=4
-    set  softtabstop=4
-
-    set lbr                 " Saut de ligne lorsque tw est dépassé
+    set expandtab           " Replace tabs with spaces
+    set tabstop=4           " Tabulation width
+    set shiftwidth=4
+    set softtabstop=4
+    set smarttab
     set autoindent
-    set wrap                "  Afficher les lignes trop long sur plusieurs
 
-    set laststatus=2        " Afficher en permanence la barre de status
-    set statusline=%<%f\                     " Filename
-    set statusline+=%w%h%m%r                 " Options
-    set statusline+=%{fugitive#statusline()} " Git Hotness
-    set statusline+=\ [%{&ff}/%Y]            " Filetype
-    set statusline+=\ [%{getcwd()}]          " Current dir
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    "set lbr                " Break when a line goes over tw chars
+    "set wrap               " Show long lines on multiple lines
+    set nowrap
 
+    set laststatus=2        " Always show status bar
 
-    au! BufNewFile,BufRead *.cl setf cpp
+    "set statusline=%<%f\                     " Filename
+    "set statusline+=%w%h%m%r                 " Options
+    "set statusline+=%{fugitive#statusline()} " Git Hotness
+    "set statusline+=\ [%{&ff}/%Y]            " Filetype
+    "set statusline+=\ [%{getcwd()}]          " Current dir
+    "set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 " }
-" Déplacements modifs clavier {
+" Keyboard mappings {
 
-    set backspace=indent,eol,start " Définition du comportement de backspace
+    set backspace=indent,eol,start
     set whichwrap+=<,>,h,l
 
-    let mapleader = ","     " On définit la touche leader pour définir quelques raccourcis
+    let mapleader = ","
     let g:mapleader = ","
-    nmap <leader>w :w!<CR>  " Sauvegarde rapide
-    nmap <leader>q :q!<cr>  " Fermeture rapide
+    nmap <leader>w :w!<CR>
+    nmap <leader>q :q!<CR>
     map <leader>u :redo<CR>
-    nmap <leader>bd :Bclose<cr> " Raccourci fermeture du buffer actuel
-    nmap <leader>tn :tabnew<cr> " Raccourci pour gerer les onglets
-    nmap <leader>to :tabonly<cr>
-    nmap <leader>tc :tabclose<cr>
-    nmap <leader>tm :tabmove
-    nmap <leader>tl :tabnext<cr>
+    nmap <leader>bd :Bclose<CR>
+    nmap <leader>tn :tabnew<CR>
+    nmap <leader>to :tabonly<CR>
+    nmap <leader>tc :tabclose<CR>
+    nmap <leader>tm :tabmove<CR>
+    nmap <leader>tl :tabnext<CR>
+    nmap <leader>tp :tabprevious<cr>
     nmap <F5> :!ctags -R &<cr><cr>
     inoremap <leader><leader> <ESC>
 
-    noremap n l
-    noremap r k
-    noremap s j
-    noremap t h
-
-    noremap h t
-    noremap j s
-    noremap l n
-    noremap k r
-
-    noremap è ^
-    noremap È 0
-
-    " Déplacement facile entre les fenètres ouvertes, version bépo
-    map <C-r> <C-W>k
-    map <C-s> <C-W>j
-    map <C-t> <C-W>h
-    map <C-n> <C-W>l
-
-    highlight NbSp ctermbg=lightgray guibg=lightred
-    match NbSp /\%xa0/
+    let g:use_bepo_keyboard = 1
+    if (g:use_bepo_keyboard == 1)
+        source ~/.vimrc.bepo
+    endif
 
     nmap <F4> :Ggrep expand("<cword>")
-
-" }
-" Fonctions {
-
-    function! MyFoldFunction()
-            let line = getline(v:foldstart)
-            let sub = substitute(line,'/\*\|\*/\|^\s+', '', 'g')
-            let lines = v:foldend - v:foldstart + 1
-            return v:folddashes.sub.'...'.lines.'Lines...'.getline(v:foldend)
-    endfunction
-
-
-    " Fold automatique
-    set  foldmethod =syntax
-    set  foldtext =MyFoldFunction()
-
-    " fill rest of line with characters
-    function! FillLine( str )
-        " set tw to the desired total length
-        let tw = &textwidth
-        if tw==0 | let tw = 80 | endif
-        " strip trailing spaces first
-        .s/[[:space:]]*$//
-        " calculate total number of 'str's to insert
-        let reps = (tw - col("$")) / len(a:str)
-        " insert them, if there's room, removing
-        trailing spaces (though forcing
-        " there to be one)
-        if reps > 0
-            .s/$/\=(' '.repeat(a:str,reps))/
-        endif
-    endfunction '
 " }
 " Plugins{
     " CTRL-P (Fuzzy finder) {

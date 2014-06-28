@@ -8,6 +8,7 @@ git submodule update
 currDir=$(pwd)
 ln -sf $currDir/vimrc ~/.vimrc
 ln -sf $currDir/vimrc.bundles ~/.vimrc.bundles
+ln -sf $currDir/vimrc.bepo ~/.vimrc.bepo
 ln -sf $currDir/vim ~/.vim
 
-vim +BundleInstall
+vim -u $currDir/vimrc.install +BundleInstall

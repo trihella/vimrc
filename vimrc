@@ -182,7 +182,7 @@
         let g:pymode_indent = 1
     " }
     " Ctags {
-        set tags=./tags;/,~/.vimtags
+        set tags+=./tags;/,~/.vimtags
     " }
     " Session List {
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize

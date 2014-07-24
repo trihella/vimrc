@@ -23,7 +23,7 @@ And go !
 ```vim 
    set rtp+=~/.vim/bundle/vundle/
 ``` 
- * Replace the path with %VIMRC_DIR%/vimrc.bundles (note that there is not the first dot) in this line in the vimrc
+ * Replace the path with %VIMRC_DIR%/vimrc.bundles (note that there is not the first dot in 'vimrc.bundle') in this line in the vimrc
 ```vim
    source ~/.vimrc.bundles
 ```
@@ -31,4 +31,4 @@ And go !
  * Launch vim (you should have lots of errors on start) and run :BundleInstall
  * You can restart vim and it will be fine
 
-Some plugins like TagBar requires tools such as ctags that you must install to use the plugins. But vim will not print any error message if you do not try to use them.
+Some plugins like TagBar requires tools such as ctags that you must install to use the plugins, and place them in your path. But vim will not print any error message if you do not try to use them.

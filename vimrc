@@ -56,8 +56,9 @@
     " Vundle manage all plugins, configure the next line to point vundle
     " install directory
     set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
+    call vundle#begin()
     source ~/.vimrc.bundles
+    call vundle#end()
 " }
 " UI Look {
     set cursorline          " Highlight the current line
@@ -131,7 +132,7 @@
     nmap <F5> :!ctags -R &<cr><cr>
     inoremap <leader><leader> <ESC>
 
-    let g:use_bepo_keyboard = 1
+    let g:use_bepo_keyboard = 0
     if (g:use_bepo_keyboard == 1)
         source ~/.vimrc.bepo
     endif
@@ -216,10 +217,15 @@
         "let g:SuperTabDefaultCompletionType = "context"
     " }
     " Snipmate {
-        imap <C-a> <Plug>snipMateNextOrTrigger
-        smap <C-a> <Plug>snipMateNextOrTrigger
-        imap <C-b> <Plug>snipMateBack
-        smap <C-b> <Plug>snipMateBack
+        let g:UltiSnipsUsePythonVersion = 2
+        let g:UltiSnipsExpandTrigger="<C-a>"
+        let g:UltiSnipsJumpForwardTrigger="<C-b>"
+        let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+        let g:UltiSnipsEditSplit="vertical"
+        "imap <C-a> <Plug>snipMateNextOrTrigger
+        "smap <C-a> <Plug>snipMateNextOrTrigger
+        "imap <C-b> <Plug>snipMateBack
+        "smap <C-b> <Plug>snipMateBack
     " }
     " Tag Bar{
         nmap <F8> :TagbarToggle<CR>

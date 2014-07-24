@@ -11,4 +11,4 @@ ln -sf $currDir/vimrc.bundles ~/.vimrc.bundles
 ln -sf $currDir/vimrc.bepo ~/.vimrc.bepo
 ln -sf $currDir/vim ~/.vim
 
-vim -u $currDir/vimrc.install +BundleInstall
+vim -u $currDir/vimrc.install +PluginInstall

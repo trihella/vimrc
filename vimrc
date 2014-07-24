@@ -184,11 +184,6 @@
     " Ctags {
         set tags+=./tags;/,~/.vimtags
     " }
-    " Session List {
-        set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-        nmap <leader>sl :SessionList<CR>
-        nmap <leader>ss :SessionSave<CR>
-    " }
     " Undo Tree {
         let g:undotree_SetFocusWhenToggle=1
         nnoremap <F7> :GundoToggle<CR>

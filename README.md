@@ -11,6 +11,11 @@
     $ git clone https://github.com/trihella/vimrc.git
     $ cd vimrc && ./install.sh
 ```
+And go !
+
+```bash
+    $ vim
+```
 ##Windows
  * Install Git for windows, clone this repository, lets call %VIMRC_DIR% its absolute path.
  * Manually install vundle

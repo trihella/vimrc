@@ -1,14 +1,19 @@
 #!/bin/sh
 
-# Cloning vundle
-git submodule init
-git submodule update
+
+pushd `dirname $0` > /dev/null
+SCRIPT_PATH=`pwd`
 
 # Creating symbolik links
-currDir=$(pwd)
-ln -sf $currDir/vimrc ~/.vimrc
-ln -sf $currDir/vimrc.bundles ~/.vimrc.bundles
-ln -sf $currDir/vimrc.bepo ~/.vimrc.bepo
-ln -sf $currDir/vim ~/.vim
+ln -sf $SCRIPT_PATH/vimrc ~/.vimrc
+ln -sf $SCRIPT_PATH/vimrc.bundles ~/.vimrc.bundles
+ln -sf $SCRIPT_PATH/vimrc.bepo ~/.vimrc.bepo
+ln -sf $SCRIPT_PATH/vim ~/.vim
 
-vim -u $currDir/vimrc.install +PluginInstall
+#mkdir -p ~/.vim/bundle
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+vim -u $SCRIPT_PATH/vimrc.install +PluginInstall
+
+#rm -rf $TEMP_VUNDLE_PATH
+popd > /dev/null

@@ -55,7 +55,7 @@
 " Bundles {
     " Vundle manage all plugins, configure the next line to point vundle
     " install directory
-    set rtp+=~/.vim/bundle/vundle/
+    set rtp+=~/.vim/bundle/Vundle.vim/
     call vundle#begin()
     source ~/.vimrc.bundles
     call vundle#end()

@@ -222,10 +222,6 @@
         let g:UltiSnipsJumpForwardTrigger="<C-b>"
         let g:UltiSnipsJumpBackwardTrigger="<C-z>"
         let g:UltiSnipsEditSplit="vertical"
-        "imap <C-a> <Plug>snipMateNextOrTrigger
-        "smap <C-a> <Plug>snipMateNextOrTrigger
-        "imap <C-b> <Plug>snipMateBack
-        "smap <C-b> <Plug>snipMateBack
     " }
     " Tag Bar{
         nmap <F8> :TagbarToggle<CR>

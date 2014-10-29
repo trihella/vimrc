@@ -6,24 +6,74 @@
 "       Mail: hiscockt@minatec.inpg.fr
 " ===========================================================================
 
-Plugin 'gmarik/vundle'
-Plugin 'tpope/vim-fugitive'
+
+Plugin 'gmarik/Vundle'
+
+" Fast file switching
 Plugin 'kien/ctrlp.vim'
-Plugin 'fisadev/vim-ctrlp-cmdpalette'
-Plugin 'tpope/vim-surround'
+
+" Very efficient moves
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'klen/python-mode'
-Plugin 'dag/vim2hs'
+
+" A huge set of colorschemes
 Plugin 'flazz/vim-colorschemes'
-Plugin 'mbbill/undotree'
-Plugin 'mhinz/vim-startify'
-Plugin 'godlygeek/tabular'
+
+" Relative line numbering
 Plugin 'myusuf3/numbers.vim'
+
+" Nice info bar
 Plugin 'bling/vim-airline'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'majutsushi/tagbar'
+" Plugin 'edkolev/tmuxline.vim'
+
+" Completion using tab
 Plugin 'SuperTab'
+
+" Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+
+" Autoclose programming chars
 Plugin 'Townk/vim-autoclose'
+
+" Latex support
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
+
+" Python support
+Plugin 'klen/python-mode'
+
+" Haskell support
+Plugin 'dag/vim2hs'
+
+" ===
+" Plugins I'm not shure to keep
+" ===
+
+" Git integration
+"Plugin 'tpope/vim-fugitive'
+
+""  " Tree of file changes
+"Plugin 'mbbill/undotree'
+"
+"" Make tables fast
+"Plugin 'godlygeek/tabular'
+"
+"" Tag bar
+"Plugin 'majutsushi/tagbar'
+"
+"" Nice start screen
+"Plugin 'mhinz/vim-startify'
+"
+"" Syntax checking while editing
+"Plugin 'scrooloose/syntastic'
+"
+"" Commands previously executed in ctrl-p
+"Plugin 'fisadev/vim-ctrlp-cmdpalette'
+"
+"" Fast surrounding bindings
+"Plugin 'tpope/vim-surround'
+"
+"" Needed for ghc mod
+"Plugin 'Shougo/vimproc'
+"
+"" Haskell type info ect...
+"Plugin 'eagletmt/ghcmod-vim'

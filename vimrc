@@ -77,19 +77,29 @@
        set background=dark
        colorscheme kolor
        set antialias
-       set guifont=Monospace\ 9
+       " set guifont=Monospace\ 9
+       set guifont=Consolas\ 10
     else
-        set background=dark
-        colorscheme hybrid
+        if &term=="xterm-256color"
+            set background=dark
+            "let g:solarized_termcolors=256
+            let g:solarized_underline=0
+            colorscheme solarized
+        else
+            set background=dark
+            colorscheme kolor
+        endif
+        "colorscheme hybrid
     endif
 
     " Some color customisations
     hi clear SpellBad
     hi SpellBad cterm=underline
-    hi ColorColumn ctermbg=236
-    hi CursorLine ctermbg=236 cterm=NONE
+    "hi ColorColumn ctermbg=236
+    "hi CursorLine ctermbg=236 cterm=NONE
 
-    "set tw=80              " Max line width 78. Disabled, i use the cursor column
+    " set tw=80              " Max line width 78 : Disabled, cursor column is a
+                             " better indicator
     set cc=79               " Show cursor column
 
     set expandtab           " Replace tabs with spaces
@@ -122,10 +132,10 @@
     nmap <leader>tm :tabmove<CR>
     nmap <leader>tl :tabnext<CR>
     nmap <leader>tp :tabprevious<cr>
-    nmap <F5> :!ctags -R &<cr><cr>
+    " nmap <F5> :!ctags -R &<cr><cr>
     inoremap <leader><leader> <ESC>
 
-    let g:use_bepo_keyboard = 0
+    let g:use_bepo_keyboard = 1
     if (g:use_bepo_keyboard == 1)
         source ~/.vimrc.bepo
     endif
@@ -144,8 +154,8 @@
         let g:ctrlp_working_path_mode = 0
         " Ignore files on fuzzy finder
         let g:ctrlp_custom_ignore = {
-          \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
-          \ 'file': '\.pyc$\|\.pyo$',
+          \ 'dir':  '\v[\/](\.git|\.hg|\.svn|dist)$',
+          \ 'file': '\v\.(bin|pyc|o)$',
           \ }
     "}
     " vim2hs {
@@ -185,20 +195,8 @@
         set tags+=./tags;/,~/.vimtags
     " }
     " Undo Tree {
-        let g:undotree_SetFocusWhenToggle=1
-        nnoremap <F7> :GundoToggle<CR>
-    " }
-    " Startify{
-        let g:startify_custom_header = [
-            \ '   __      ___            ______ ____   ',
-            \ '   \ \    / (_)           |____  |___ \ ',
-            \ '    \ \  / / _ _ __ ___       / /  __) |',
-            \ '     \ \/ / | | ''_ ` _ \     / /  |__ <',
-            \ '      \  /  | | | | | | |   / /   ___) |',
-            \ '       \/   |_|_| |_| |_|  /_(_) |____/ ',
-            \ '',
-            \ '',
-            \ ]
+        " let g:undotree_SetFocusWhenToggle=1
+        " nnoremap <F7> :GundoToggle<CR>
     " }
     " SuperTab {
         set omnifunc=syntaxcomplete#Complete
@@ -210,9 +208,5 @@
         let g:UltiSnipsJumpForwardTrigger="<C-b>"
         let g:UltiSnipsJumpBackwardTrigger="<C-z>"
         let g:UltiSnipsEditSplit="vertical"
-    " }
-    " Tag Bar{
-        nmap <F8> :TagbarToggle<CR>
-
     " }
 " }

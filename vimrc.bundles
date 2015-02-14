@@ -7,7 +7,9 @@
 " ===========================================================================
 
 
-Plugin 'gmarik/Vundle'
+" Let vundle manage vundle
+Plugin 'gmarik/Vundle.vim'
+
 
 " Fast file switching
 Plugin 'kien/ctrlp.vim'
@@ -44,6 +46,21 @@ Plugin 'klen/python-mode'
 " Haskell support
 Plugin 'dag/vim2hs'
 
+" Extra haskell pluging
+"" Needed for ghc mod
+Plugin 'Shougo/vimproc'
+" Plugin 'eagletmt/ghcmod-vim'
+Plugin 'vim-scripts/alex.vim'
+Plugin 'vim-scripts/happy.vim'
+
+
+" Tag bar
+Plugin 'majutsushi/tagbar'
+
+" Rust support
+Plugin 'wting/rust.vim'
+
+
 " ===
 " Plugins I'm not shure to keep
 " ===
@@ -57,23 +74,15 @@ Plugin 'dag/vim2hs'
 "" Make tables fast
 "Plugin 'godlygeek/tabular'
 "
-"" Tag bar
-"Plugin 'majutsushi/tagbar'
 "
 "" Nice start screen
 "Plugin 'mhinz/vim-startify'
 "
-"" Syntax checking while editing
-"Plugin 'scrooloose/syntastic'
+" Syntax checking while editing
+" Plugin 'scrooloose/syntastic'
 "
 "" Commands previously executed in ctrl-p
 "Plugin 'fisadev/vim-ctrlp-cmdpalette'
 "
 "" Fast surrounding bindings
 "Plugin 'tpope/vim-surround'
-"
-"" Needed for ghc mod
-"Plugin 'Shougo/vimproc'
-"
-"" Haskell type info ect...
-"Plugin 'eagletmt/ghcmod-vim'

@@ -18,9 +18,6 @@
 
     set showcmd             " Print current command
     set  nocp               " Vi compatibility disabled
-    filetype on
-    filetype indent on
-    filetype plugin on
     set mouse=a             " Mouse active in vim shell version
     set so=7                " 7 line bellow vertical moves
     set nomousehide         " Always show cursor
@@ -56,9 +53,16 @@
     " Vundle manage all plugins, configure the next line to point vundle
     " install directory
     set rtp+=~/.vim/bundle/Vundle.vim/
+    set rtp+=~/.vim/bundle/vimproc.vim/
     call vundle#begin()
     source ~/.vimrc.bundles
     call vundle#end()
+    " Must be called after plugin are loaded otherwise causes some trouble with
+    " ultisnips
+    filetype on
+    filetype indent on
+    filetype plugin on
+
 " }
 " UI Look {
     set cursorline          " Highlight the current line
@@ -87,7 +91,8 @@
             colorscheme solarized
         else
             set background=dark
-            colorscheme kolor
+            " colorscheme kolor
+            colorscheme bubblegum
         endif
         "colorscheme hybrid
     endif
@@ -135,12 +140,26 @@
     " nmap <F5> :!ctags -R &<cr><cr>
     inoremap <leader><leader> <ESC>
 
-    let g:use_bepo_keyboard = 1
+    let g:use_bepo_keyboard = 0
     if (g:use_bepo_keyboard == 1)
         source ~/.vimrc.bepo
     endif
 
     nmap <F4> :Ggrep expand("<cword>")
+" }
+" Extra Functions {
+    " Delete trailing white space on save
+    func! DeleteTrailingWS()
+        exe "normal mz"
+        %s/\s\+$//ge
+        exe "normal `z"
+    endfunc
+
+    autocmd BufRead *.rs :set ft=rust
+    augroup whitespace
+        autocmd!
+        autocmd BufWrite *.hs :call DeleteTrailingWS()
+    augroup END
 " }
 " Plugins{
     " CTRL-P (Fuzzy finder) {
@@ -158,8 +177,38 @@
           \ 'file': '\v\.(bin|pyc|o)$',
           \ }
     "}
-    " vim2hs {
+    " vim-haskell {
         let g:haskell_conceal_wide = 1
+        let g:haskell_conceal_enumerations = 1
+
+        set completeopt+=longest
+        " Use buffer words as default tab completion
+        let g:SuperTabDefaultCompletionType = '<c-x><c-p>'
+        " But provide (neco-ghc) omnicompletion
+        if has("gui_running")
+            imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+        else " no gui
+            if has("unix")
+                inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+            endif
+        endif
+
+        " Show types in completion suggestions
+        let g:necoghc_enable_detailed_browse = 1
+        " Type of expression under cursor
+        nmap <silent> <leader>ht :GhcModType<CR>
+        " Insert type of expression under cursor
+        nmap <silent> <leader>hT :GhcModTypeInsert<CR>
+        " GHC errors and warnings
+        nmap <silent> <leader>hc :SyntasticCheck ghc_mod<CR>
+        " Haskell Lint
+        " let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['haskell'] }
+        " nmap <silent> <leader>hl :SyntasticCheck hlint<CR>
+    " }
+    " Slime {
+    "    vmap <silent> <Leader>rs <Plug>SendSelectionToTmux
+    "    nmap <silent> <Leader>rs <Plug>NormalModeSendToTmux
+    "    nmap <silent> <Leader>rv <Plug>SetTmuxVars
     " }
     " vim-airline {
         let g:airline#extensions#tabline#enabled = 1
@@ -199,7 +248,7 @@
         " nnoremap <F7> :GundoToggle<CR>
     " }
     " SuperTab {
-        set omnifunc=syntaxcomplete#Complete
+        " set omnifunc=syntaxcomplete#Complete
         "let g:SuperTabDefaultCompletionType = "context"
     " }
     " Snipmate {

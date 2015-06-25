@@ -82,7 +82,7 @@
        colorscheme kolor
        set antialias
        " set guifont=Monospace\ 9
-       set guifont=Consolas\ 10
+       set guifont=Consolas\ 11
     else
         if &term=="xterm-256color"
             set background=dark
@@ -91,8 +91,8 @@
             colorscheme solarized
         else
             set background=dark
-            " colorscheme kolor
-            colorscheme bubblegum
+            colorscheme kolor
+            " colorscheme bubblegum
         endif
         "colorscheme hybrid
     endif
@@ -140,7 +140,7 @@
     " nmap <F5> :!ctags -R &<cr><cr>
     inoremap <leader><leader> <ESC>
 
-    let g:use_bepo_keyboard = 0
+    let g:use_bepo_keyboard = 1
     if (g:use_bepo_keyboard == 1)
         source ~/.vimrc.bepo
     endif

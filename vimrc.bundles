@@ -49,7 +49,7 @@ Plugin 'dag/vim2hs'
 " Extra haskell pluging
 "" Needed for ghc mod
 Plugin 'Shougo/vimproc'
-" Plugin 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/ghcmod-vim'
 Plugin 'vim-scripts/alex.vim'
 Plugin 'vim-scripts/happy.vim'
 
@@ -58,7 +58,9 @@ Plugin 'vim-scripts/happy.vim'
 Plugin 'majutsushi/tagbar'
 
 " Rust support
-Plugin 'wting/rust.vim'
+" Plugin 'wting/rust.vim'
+
+" Plugin 'zah/nimrod.vim'
 
 
 " ===
